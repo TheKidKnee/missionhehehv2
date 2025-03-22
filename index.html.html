@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonam, Will You Be My Girlfriend?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            overflow: hidden;
+        }
+        .slide {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .active {
+            display: flex;
+        }
+        h1 {
+            color: #ff3399;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .yes {
+            background-color: #ff3399;
+            color: white;
+        }
+        .no {
+            background-color: #666;
+            color: white;
+            position: absolute;
+        }
+        #success-message {
+            display: none;
+            font-size: 22px;
+            color: #008000;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide active" id="slide1">
+        <h1>Hello Sonam! 💖</h1>
+        <p>Hey there! I just wanted to ask you something really special. 😊</p>
+        <button class="btn yes" onclick="nextSlide()">Next</button>
+    </div>
+    
+    <div class="slide" id="slide2">
+        <h1>But first... 🤔</h1>
+        <p>Take a deep breath. This is important! 💓</p>
+        <button class="btn yes" onclick="nextSlide()">Next</button>
+    </div>
+    
+    <div class="slide" id="slide3">
+        <h1>Okay, here it comes... 😳</h1>
+        <p>Are you ready?</p>
+        <button class="btn yes" onclick="nextSlide()">Yes, I’m ready!</button>
+    </div>
+    
+    <div class="slide" id="slide4">
+        <h1>Will you be my girlfriend? 💕</h1>
+        <div class="buttons">
+            <form id="yes-form" action="https://formsubmit.co/ishxn.vishwakarma@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Sonam said YES! ❤️">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="message" value="Sonam said YES! ❤️">
+                <button type="submit" class="btn yes" onclick="showSuccessMessage()">Yes</button>
+            </form>
+            <button class="btn no" onmouseover="moveButton(this)">No</button>
+        </div>
+        <p id="success-message">Your response has been sent! 🎉</p>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        function nextSlide() {
+            document.getElementById(`slide${currentSlide}`).classList.remove('active');
+            currentSlide++;
+            document.getElementById(`slide${currentSlide}`).classList.add('active');
+        }
+
+        function moveButton(button) {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function showSuccessMessage() {
+            document.getElementById("success-message").style.display = "block";
+        }
+    </script>
+</body>
+</html>
